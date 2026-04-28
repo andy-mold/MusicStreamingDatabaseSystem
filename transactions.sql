@@ -36,7 +36,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO PLAYLIST (playlist_id, name, description, creation_date, visibility, USER_user_id)
-VALUES (2001, 'Person1_Playlist', 'My new playlist', NOW(), 'Public', 1);
+VALUES (2001, 'Person1_Playlist', 'My new playlist', NOW(), 'Public', 101);
 
 INSERT INTO PLAYLIST_SONG (playlist_id, song_id, date_added, position)
 VALUES 
