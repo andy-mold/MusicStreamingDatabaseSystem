@@ -1,6 +1,6 @@
 START TRANSACTION;
 
-INSERT INTO USER (user_id, username, email, password, country, account_creation_date)
+INSERT INTO `USER` (user_id, username, email, password, country, account_creation_date)
 VALUES (101, 'ex_name', 'name@email.com', 'pass123', 'USA', NOW());
 
 INSERT INTO PLAYLIST (playlist_id, name, description, creation_date, visibility, USER_user_id)
@@ -27,13 +27,16 @@ WHERE USER_user_id = 101;
 DELETE FROM FOLLOW
 WHERE user_id = 101;
 
-DELETE FROM USER
+DELETE FROM `USER`
 WHERE user_id = 101;
 
 COMMIT;
 
 
 START TRANSACTION;
+
+INSERT INTO `USER` (user_id, username, email, password, country, account_creation_date)
+VALUES (101, 'person1', 'person1@email.com', 'pass123', 'USA', NOW());
 
 INSERT INTO PLAYLIST (playlist_id, name, description, creation_date, visibility, USER_user_id)
 VALUES (2001, 'Person1_Playlist', 'My new playlist', NOW(), 'Public', 101);
@@ -46,23 +49,16 @@ VALUES
 
 COMMIT;
 
+
 START TRANSACTION;
 
 UPDATE PLAYLIST_SONG
-SET position = 99
-WHERE playlist_id = 2001 AND song_id = 301;
-
-UPDATE PLAYLIST_SONG
-SET position = 1
-WHERE playlist_id = 2001 AND song_id = 302;
-
-UPDATE PLAYLIST_SONG
-SET position = 2
-WHERE playlist_id = 2001 AND song_id = 303;
-
-UPDATE PLAYLIST_SONG
-SET position = 3
-WHERE playlist_id = 2001 AND song_id = 301;
+SET position = CASE
+    WHEN song_id = 302 THEN 1
+    WHEN song_id = 303 THEN 2
+    WHEN song_id = 301 THEN 3
+END
+WHERE playlist_id = 2001;
 
 COMMIT;
 
@@ -74,7 +70,5 @@ VALUES (3001, 'New Album', CURDATE(), 1, 101);
 
 INSERT INTO SONG (song_id, title, duration, release_date, ALBUM_album_id)
 VALUES (4001, 'Brand New Song', 200, CURDATE(), 3001);
-
-SELECT artist_id, name FROM ARTIST WHERE artist_id = 101;
 
 COMMIT;
