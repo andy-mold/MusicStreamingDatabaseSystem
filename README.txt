@@ -5,3 +5,4 @@ We used MySQL to host the database, specifically MySQL workbench. These are step
   2. Open the files create.sql, populate.sql, and queries.sql
   3. Run create.sql, followed by populate.sql
   4. Run queries.sql to see the results of our sample queries from milestone 2
+  5. Run the different transactions separately within transactions.sql, and use transactionTestQueries.sql to see that they worked
