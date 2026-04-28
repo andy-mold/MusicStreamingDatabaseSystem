@@ -1,0 +1,7 @@
+How to use the Database
+
+We used MySQL to host the database, specifically MySQL workbench. These are steps of how to create and use the database with MySQL Workbench.
+  1. Set up MySQL Workbench
+  2. Open the files create.sql, populate.sql, and queries.sql
+  3. Run create.sql, followed by populate.sql
+  4. Run queries.sql to see the results of our sample queries from milestone 2
